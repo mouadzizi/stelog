@@ -10,8 +10,9 @@ const COLORS = {
     400: "#373976",
     500: "#232553",
   },
-  primary: "#f7931e",
-  secondary: "#ffc814",
+  white: "#ffffff",
+  primary: "#e0641e",
+  secondary: "#00b1cf",
   text: "#000000",
   caption: "#c4c4c4",
 };
