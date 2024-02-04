@@ -1,6 +1,5 @@
 import React from "react";
-
-import { NavigationContainer } from "@react-navigation/native";
+import { COLORS } from "../../../globalStyle.style";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 //Pages of Authentification
@@ -20,7 +19,14 @@ export default function HomeStackNav() {
       <Stack.Screen
         name="OrderDetails"
         component={Details}
-        options={{ headerShown: true }}
+        options={{
+          title: "detail Command",
+          headerTitleAlign: "center",
+          headerTintColor: "white",
+          headerStyle: {
+            backgroundColor: COLORS.primary,
+          },
+        }}
       />
     </Stack.Navigator>
   );
