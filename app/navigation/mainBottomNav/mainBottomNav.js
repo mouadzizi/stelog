@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { COLORS } from "../../../globalStyle.style";
 
-import HomeView from "../../views/homeView";
+import HomeStackNav from "../../navigation/HomeStackNav";
 import addOrderView from "../../views/addOrdView";
 
 const Tab = createBottomTabNavigator();
@@ -15,10 +15,10 @@ export default function MainBottomNav() {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
-          if (route.name === "HomeView") {
+          if (route.name === "HomeStackNav") {
             iconName = focused ? "home" : "home-outline";
           } else if (route.name === "addOrderView") {
-            iconName = focused ? "person-circle" : "person-circle-outline";
+            iconName = focused ? "add-circle-outline" : "add-circle";
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -28,8 +28,8 @@ export default function MainBottomNav() {
         inactiveTintColor: "gray",
       }}
     >
-      <Tab.Screen name="HomeView" component={HomeView} />
-      <Tab.Screen name="addOrderView" component={addOrderView} />
+      <Tab.Screen name="HomeStackNav" component={HomeStackNav} />
+      <Tab.Screen name="addOrderView" component={addOrderView} header={false} />
     </Tab.Navigator>
   );
 }
