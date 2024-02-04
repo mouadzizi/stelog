@@ -14,7 +14,14 @@ export default function HomeStackNav() {
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{ headerShown: false }}
+        options={{
+          title: "Commands",
+          headerTitleAlign: "center",
+          headerTintColor: "white",
+          headerStyle: {
+            backgroundColor: COLORS.primary,
+          },
+        }}
       />
       <Stack.Screen
         name="OrderDetails"

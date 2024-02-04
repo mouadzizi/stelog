@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  ActivityIndicator,
-  Keyboard,
-} from "react-native";
+import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 import { Divider, Input } from "react-native-elements";
 import styles from "./SignIn.style";
 
@@ -17,10 +11,6 @@ import * as Animatable from "react-native-animatable";
 import { COLORS } from "../../../globalStyle.style";
 
 export default function SignIn({ navigation }) {
-  const signInAction = () => {
-    console.log("hello");
-  };
-
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -29,6 +19,34 @@ export default function SignIn({ navigation }) {
   const [errMes, setErrMes] = useState("");
   const input = React.useRef();
   const disable = !data.email || !data.password || loading;
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePassword = (password) => {
+    return password.length >= 4;
+  };
+
+  const signInAction = () => {
+    if (!validateEmail(data.email)) {
+      setErrMes("Please enter a valid email address");
+      return;
+    }
+
+    if (!validatePassword(data.password)) {
+      setErrMes("Password should be at least 4 characters");
+      return;
+    }
+
+    setErrMes("");
+    if (data.email === "admin@stelog.fr" && data.password === "admin") {
+      navigation.replace("homeBottomNav");
+    } else {
+      setErrMes("Invalid email or password");
+    }
+  };
 
   return (
     <View style={styles.cotainer}>
@@ -74,7 +92,7 @@ export default function SignIn({ navigation }) {
         <Divider style={{ marginVertical: 15 }} />
 
         <TouchableOpacity
-          onPress={() => navigation.replace("homeBottomNav")}
+          onPress={signInAction}
           style={disable ? styles.btnDisable : styles.btn}
           disabled={disable}
         >
