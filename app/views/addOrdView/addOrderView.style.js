@@ -5,7 +5,10 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    padding: 20,
+    paddingVertical: 20,
+  },
+  containerScroll: {
+    paddingHorizontal: 20,
   },
   section: {
     marginBottom: 20,
@@ -29,14 +32,20 @@ export default StyleSheet.create({
     marginBottom: 10,
   },
   selectedArticle: {
-    backgroundColor: "#4CAF50",
+    backgroundColor: COLORS.primary,
     color: "#fff",
   },
   articleButtonText: {
     fontSize: 16,
   },
   addButton: {
-    backgroundColor: "#4CAF50",
+    backgroundColor: COLORS.primary,
+    padding: 15,
+    borderRadius: 5,
+    alignItems: "center",
+  },
+  addDisabled: {
+    backgroundColor: COLORS.grey,
     padding: 15,
     borderRadius: 5,
     alignItems: "center",

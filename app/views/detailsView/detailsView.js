@@ -1,7 +1,7 @@
 import React from "react";
 import { View, ScrollView, Text, StyleSheet } from "react-native";
 import styles from "./detailsView.style";
-const DetailsView = ({ route }) => {
+const DetailsView = ({ route, navigation }) => {
   const { order } = route.params;
 
   return (

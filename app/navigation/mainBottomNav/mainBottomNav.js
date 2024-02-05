@@ -12,6 +12,8 @@ export default function MainBottomNav() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
+        activeTintColor: COLORS.primary,
+        inactiveTintColor: "gray",
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
@@ -23,10 +25,6 @@ export default function MainBottomNav() {
           return <Ionicons name={iconName} size={size} color={color} />;
         },
       })}
-      tabBarOptions={{
-        activeTintColor: COLORS.primary,
-        inactiveTintColor: "gray",
-      }}
     >
       <Tab.Screen
         name="HomeStackNav"

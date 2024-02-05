@@ -13,14 +13,14 @@ export default StyleSheet.create({
   },
   containerInfo: {
     backgroundColor: COLORS.white,
-    flex: 7,
+    flex: 10,
   },
   deleteContainer: {
-    flex: 2,
+    flex: 3,
     backgroundColor: COLORS.primary,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 15,
+    borderRadius: 12,
   },
   header: {
     marginBottom: 10,
@@ -42,6 +42,7 @@ export default StyleSheet.create({
     fontWeight: "bold",
   },
   infoText: {
+    fontSize: 10,
     color: "#333",
   },
   buttonText: {

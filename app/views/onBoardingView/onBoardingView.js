@@ -9,6 +9,7 @@ import * as Animatable from "react-native-animatable";
 export default function OnBoardingView({ navigation }) {
   const [loading, setloading] = useState(true);
   let logo = "../../assets/logo.png";
+  let splash = "../../assets/splash.png";
   let image1 = "../../assets/cover1.jpg";
   let image2 = "../../assets/cover2.jpg";
 
@@ -40,7 +41,7 @@ export default function OnBoardingView({ navigation }) {
         easing="linear"
       >
         <Image
-          source={require(logo)}
+          source={require(splash)}
           style={styles.imageSt}
           resizeMode="contain"
         />

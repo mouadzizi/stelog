@@ -18,7 +18,11 @@ export default function HomeView({ navigation }) {
     <View style={styles.container}>
       {orders && orders.length > 0 ? (
         orders.map((order) => (
-          <OrderComponent key={order.OrderId} order={order} />
+          <OrderComponent
+            key={order.OrderId}
+            order={order}
+            navigation={navigation}
+          />
         ))
       ) : (
         <View style={styles.containerNoOrder}>

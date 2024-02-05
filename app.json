@@ -4,11 +4,11 @@
     "slug": "stelog",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/assets/icon.png",
+    "icon": "./app/assets/favicon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./app/assets/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "assetBundlePatterns": ["**/*"],
@@ -20,9 +20,6 @@
         "foregroundImage": "./app/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
-    },
-    "web": {
-      "favicon": "./app/assets/favicon.png"
     }
   }
 }

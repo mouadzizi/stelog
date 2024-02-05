@@ -18,9 +18,7 @@ export default function orderComponent({ order, navigation }) {
         onPress={() => navigation.navigate("OrderDetails", { order: order })}
       >
         <View style={styles.header}>
-          <Text style={styles.headerText}>
-            Order ID : {order.selectedCustomer}
-          </Text>
+          <Text style={styles.headerText}>Order ID : {order.OrderId}</Text>
         </View>
         <View style={styles.infoContainer}>
           <View style={styles.infoItem}>
@@ -28,23 +26,23 @@ export default function orderComponent({ order, navigation }) {
             <Text style={styles.infoText}>{order.shippingCity}</Text>
           </View>
           <View style={styles.infoItem}>
-            <Text style={styles.infoLabel}>Code postale de livraison:</Text>
+            <Text style={styles.infoLabel}>CP:</Text>
             <Text style={styles.infoText}>{order.shippingPostalCode}</Text>
           </View>
           <View style={styles.infoItem}>
-            <Text style={styles.infoLabel}>adresse de livraison:</Text>
+            <Text style={styles.infoLabel}>adresse :</Text>
             <Text style={styles.infoText}>{order.shippingAddress}</Text>
           </View>
           <View style={styles.infoItem}>
-            <Text style={styles.infoLabel}>Téléphone d'expédition:</Text>
+            <Text style={styles.infoLabel}>Téléphone :</Text>
             <Text style={styles.infoText}>{order.shippingPhone}</Text>
           </View>
           <View style={styles.infoItem}>
-            <Text style={styles.infoLabel}>date de commande:</Text>
+            <Text style={styles.infoLabel}>DDC:</Text>
             <Text style={styles.infoText}>{order.orderDate}</Text>
           </View>
           <View style={styles.infoItem}>
-            <Text style={styles.infoLabel}>date de livraison:</Text>
+            <Text style={styles.infoLabel}>DDL:</Text>
             <Text style={styles.infoText}>{order.ShippingDate}</Text>
           </View>
         </View>
