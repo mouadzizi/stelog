@@ -1,10 +1,19 @@
-import { View, Text } from "react-native";
 import React from "react";
+import { View, ScrollView, Text, StyleSheet } from "react-native";
+import styles from "./detailsView.style";
+const DetailsView = ({ route }) => {
+  const { order } = route.params;
 
-export default function DetailsView() {
   return (
-    <View>
-      <Text>detailsView</Text>
-    </View>
+    <ScrollView style={styles.container}>
+      {Object.keys(order).map((key) => (
+        <View key={key} style={styles.infoContainer}>
+          <Text style={styles.infoLabel}>{key}:</Text>
+          <Text style={styles.infoText}>{order[key]}</Text>
+        </View>
+      ))}
+    </ScrollView>
   );
-}
+};
+
+export default DetailsView;

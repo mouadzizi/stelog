@@ -11,6 +11,8 @@ const COLORS = {
     500: "#232553",
   },
   white: "#ffffff",
+  black: "#000000",
+  grey: "#858585",
   primary: "#e0641e",
   secondary: "#00b1cf",
   text: "#000000",

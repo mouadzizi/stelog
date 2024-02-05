@@ -63,10 +63,6 @@ export default StyleSheet.create({
     color: COLORS.white,
     fontWeight: "bold",
   },
-  captionImportant: {
-    color: COLORS.primary,
-    textAlign: "right",
-  },
   caption: {
     textAlign: "center",
     color: COLORS.caption,
