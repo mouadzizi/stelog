@@ -3,11 +3,21 @@ import { COLORS } from "../../../globalStyle.style";
 
 export default StyleSheet.create({
   container: {
+    flexDirection: "row",
+    flexWrap: "wrap",
     backgroundColor: COLORS.white,
     borderRadius: 10,
     margin: 10,
     padding: 15,
     elevation: 3,
+  },
+  containerInfo: {
+    backgroundColor: COLORS.white,
+    flex: 3,
+  },
+  deleteContainer: {
+    backgroundColor: COLORS.white,
+    flex: 1,
   },
   header: {
     marginBottom: 10,

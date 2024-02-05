@@ -3,83 +3,85 @@ import {
   View,
   Text,
   ScrollView,
-  Alert,
   TouchableOpacity,
   TextInput,
 } from "react-native";
-import { Picker } from "@react-native-picker/picker";
+import { useDatabase } from "../../contextAPI/databaseContext";
 import styles from "./addOrderView.style";
 
 export default function AddOrderView({ navigation }) {
-  const [selectedCustomer, setSelectedCustomer] = useState(null);
-  const [selectedArticles, setSelectedArticles] = useState([]);
-  const [date, setDate] = useState(new Date());
+  const [selectedCustomer, setSelectedCustomer] = useState("");
+  const [orderDate, setOrderDate] = useState("");
   const [shippingDate, setShippingDate] = useState("");
+  const [shippingName, setShippingName] = useState("");
   const [shippingAddress, setShippingAddress] = useState("");
-  const [open, setOpen] = useState(false);
+  const [shippingCity, setShippingCity] = useState("");
+  const [shippingRegion, setShippingRegion] = useState("");
+  const [shippingPostalCode, setShippingPostalCode] = useState("");
+  const [shippingCountry, setShippingCountry] = useState("");
+  const [shippingPhone, setShippingPhone] = useState("");
 
-  const customers = [
-    { id: 1, name: "Customer 1" },
-    { id: 2, name: "Customer 2" },
-  ];
+  const { customers, addOrder } = useDatabase(); // Assuming customers is an array of customers
 
-  const articles = [
-    { id: 101, name: "Article 1" },
-    { id: 102, name: "Article 2" },
-  ];
+  const handleAddOrder = () => {
+    const orderData = {
+      selectedCustomer,
+      orderDate,
+      shippingDate,
+      shippingName,
+      shippingAddress,
+      shippingCity,
+      shippingRegion,
+      shippingPostalCode,
+      shippingCountry,
+      shippingPhone,
+    };
 
-  const handleAddCommand = () => {
-    Alert.alert("Command Added:");
+    addOrder(orderData);
+
+    // Additional logic or navigation if needed
+    navigation.goBack(); // Assuming you want to go back after adding the order
   };
 
   return (
     <ScrollView style={styles.container}>
       <View style={styles.section}>
-        <Text style={styles.label}>Customer:</Text>
-        <Picker
-          selectedValue={selectedCustomer}
-          onValueChange={(itemValue) => setSelectedCustomer(itemValue)}
-        >
-          <Picker.Item label="Select Customer" value={null} />
-          {customers.map((customer) => (
-            <Picker.Item
-              key={customer.id}
-              label={customer.name}
-              value={customer.id}
-            />
-          ))}
-        </Picker>
+        <Text style={styles.label}>Order Date:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter ID Customer"
+          value={selectedCustomer}
+          onChangeText={setSelectedCustomer}
+        />
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.label}>Articles:</Text>
-        {articles.map((article) => (
-          <TouchableOpacity
-            key={article.id}
-            style={[
-              styles.articleButton,
-              selectedArticles.includes(article.id) && styles.selectedArticle,
-            ]}
-            onPress={() => {
-              const updatedArticles = selectedArticles.includes(article.id)
-                ? selectedArticles.filter((id) => id !== article.id)
-                : [...selectedArticles, article.id];
-              setSelectedArticles(updatedArticles);
-            }}
-          >
-            <Text style={styles.articleButtonText}>{article.name}</Text>
-          </TouchableOpacity>
-        ))}
+        <Text style={styles.label}>Order Date:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter Order Date"
+          value={orderDate}
+          onChangeText={setOrderDate}
+        />
       </View>
 
       <View style={styles.section}>
         <Text style={styles.label}>Shipping Date:</Text>
         <TextInput
           style={styles.input}
-          placeholder="Enter Date"
-          keyboardType="numeric"
-          value={date}
-          onChangeText={setDate}
+          placeholder="Enter Shipping Date"
+          value={shippingDate}
+          onChangeText={setShippingDate}
+        />
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.label}>Shipping Name:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter Shipping Name"
+          value={shippingName}
+          onChangeText={setShippingName}
         />
       </View>
 
@@ -93,8 +95,58 @@ export default function AddOrderView({ navigation }) {
         />
       </View>
 
-      <TouchableOpacity style={styles.addButton} onPress={handleAddCommand}>
-        <Text style={styles.addButtonText}>Add Command</Text>
+      <View style={styles.section}>
+        <Text style={styles.label}>Shipping City:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter Shipping City"
+          value={shippingCity}
+          onChangeText={setShippingCity}
+        />
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.label}>Shipping Region:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter Shipping Region"
+          value={shippingRegion}
+          onChangeText={setShippingRegion}
+        />
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.label}>Shipping Postal Code:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter Shipping Postal Code"
+          value={shippingPostalCode}
+          onChangeText={setShippingPostalCode}
+        />
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.label}>Shipping Country:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter Shipping Country"
+          value={shippingCountry}
+          onChangeText={setShippingCountry}
+        />
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.label}>Shipping Phone:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter Shipping Phone"
+          value={shippingPhone}
+          onChangeText={setShippingPhone}
+        />
+      </View>
+
+      <TouchableOpacity style={styles.addButton} onPress={handleAddOrder}>
+        <Text style={styles.addButtonText}>Add Order</Text>
       </TouchableOpacity>
     </ScrollView>
   );

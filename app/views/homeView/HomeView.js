@@ -1,64 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, Alert } from "react-native";
+import React from "react";
+import { View, Text } from "react-native";
+import { useDatabase } from "../../contextAPI/databaseContext";
 import OrderComponent from "../../components/orderComponent";
 
-export default function HomeView({ navigation }) {
-  const data = [
-    {
-      tiers: "A2313saSQDQ",
-      ville: "Paris",
-      CP: 92250,
-      NCommand: "pad21",
-      NBon: 251,
-      Date: "30/01/2024",
-    },
-    {
-      tiers: "A2313SasQDQ",
-      ville: "Paris",
-      CP: 92250,
-      NCommand: "pad21",
-      NBon: 251,
-      Date: "30/01/2024",
-    },
-    {
-      tiers: "A2313SsaQDQ",
-      ville: "Paris",
-      CP: 92250,
-      NCommand: "pad21",
-      NBon: 251,
-      Date: "30/01/2024",
-    },
+export default function HomeView() {
+  const { orders, isLoading } = useDatabase();
 
-    {
-      tiers: "A2313SsaQDQ",
-      ville: "Paris",
-      CP: 92250,
-      NCommand: "pad21",
-      NBon: 251,
-      Date: "30/01/2024",
-    },
-
-    {
-      tiers: "A2313SsaQDQ",
-      ville: "Paris",
-      CP: 92250,
-      NCommand: "pad21",
-      NBon: 251,
-      Date: "30/01/2024",
-    },
-  ];
+  if (isLoading) {
+    return (
+      <View>
+        <Text>Loading orders...</Text>
+      </View>
+    );
+  }
 
   return (
-    <View style={{ flex: 1 }}>
-      <View>
-        <FlatList
-          data={data}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => (
-            <OrderComponent order={item} navigation={navigation} />
-          )}
-        />
-      </View>
+    <View>
+      {orders && orders.length > 0 ? (
+        orders.map((order) => (
+          <OrderComponent key={order.OrderId} order={order} />
+        ))
+      ) : (
+        <Text>No orders available</Text>
+      )}
     </View>
   );
 }
