@@ -1,6 +1,5 @@
-import React from "react";
-import { View, Text, ScrollView, FlatList } from "react-native";
-import styles from "./HomeView.style";
+import React, { useEffect, useState } from "react";
+import { View, Text, FlatList, Alert } from "react-native";
 import OrderComponent from "../../components/orderComponent";
 
 export default function HomeView({ navigation }) {
