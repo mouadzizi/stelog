@@ -3,7 +3,7 @@ import { View, Text, ScrollView, FlatList } from "react-native";
 import styles from "./HomeView.style";
 import OrderComponent from "../../components/orderComponent";
 
-const HomeView = ({ navigation }) => {
+export default function HomeView({ navigation }) {
   const data = [
     {
       tiers: "A2313saSQDQ",
@@ -62,6 +62,4 @@ const HomeView = ({ navigation }) => {
       </View>
     </View>
   );
-};
-
-export default HomeView;
+}
