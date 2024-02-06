@@ -93,7 +93,7 @@ export default function SignIn({ navigation }) {
         <Divider style={{ marginVertical: 15 }} />
 
         <TouchableOpacity
-          onPress={navigation.replace("homeBottomNav")}
+          onPress={() => signInAction()}
           style={disable ? styles.btnDisable : styles.btn}
           disabled={disable}
         >

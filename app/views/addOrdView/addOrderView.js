@@ -12,7 +12,6 @@ import { Picker } from "@react-native-picker/picker";
 
 export default function AddOrderView({ navigation }) {
   const [selectedCustomer, setSelectedCustomer] = useState(null);
-  const [selectedProduct, setSelectedProduct] = useState(null);
   const [orderDate, setOrderDate] = useState("");
   const [shippingDate, setShippingDate] = useState("");
   const [shippingName, setShippingName] = useState("");
@@ -22,14 +21,12 @@ export default function AddOrderView({ navigation }) {
   const [shippingPostalCode, setShippingPostalCode] = useState("");
   const [shippingCountry, setShippingCountry] = useState("");
   const [shippingPhone, setShippingPhone] = useState("");
-  const [selectedProducts, setSelectedProducts] = useState([]);
 
-  const { customers, addOrder, products } = useDatabase();
+  const { customers, addOrder } = useDatabase();
 
   const handleAddOrder = () => {
     const orderData = {
       selectedCustomer,
-      selectedProduct,
       orderDate,
       shippingDate,
       shippingName,
@@ -45,7 +42,6 @@ export default function AddOrderView({ navigation }) {
 
     //to clear all the fields
     setSelectedCustomer("");
-    setSelectedProduct(null);
     setOrderDate("");
     setShippingDate("");
     setShippingName("");
@@ -67,31 +63,13 @@ export default function AddOrderView({ navigation }) {
             selectedValue={selectedCustomer}
             onValueChange={(itemValue) => setSelectedCustomer(itemValue)}
           >
-            <Picker.Item label="Select Customer" value={null} />
+            <Picker.Item label="Select Customer" value={""} />
             {customers &&
               customers.map((customer) => (
                 <Picker.Item
                   key={customer.CustomerId}
                   label={customer.CompanyName}
                   value={customer.CompanyName}
-                />
-              ))}
-          </Picker>
-        </View>
-
-        <View style={styles.section}>
-          <Text style={styles.label}>Select Product:</Text>
-          <Picker
-            selectedValue={selectedProduct}
-            onValueChange={(itemValue) => setSelectedProduct(itemValue)}
-          >
-            <Picker.Item label="Select Product" value={null} />
-            {products &&
-              products.map((product) => (
-                <Picker.Item
-                  key={product.ProductId}
-                  label={product.ProductName}
-                  value={product.ProductId}
                 />
               ))}
           </Picker>
