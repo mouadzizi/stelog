@@ -9,7 +9,6 @@ Short description of the project.
 - [Features](#features)
 - [Screenshots](#screenshots)
 - [Demo Video](#demo-video)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Installation
@@ -29,10 +28,9 @@ List the main features of the project.
 
 ## Screenshots
 
-
-![Screenshot 1](/Screenshots/1.jpeg)
-![Screenshot 2](/Screenshots/2.jpeg)
-![Screenshot 2](/Screenshots/3.jpeg)
-![Screenshot 2](/Screenshots/4.jpeg)
-![Screenshot 2](/Screenshots/5.jpeg)
-![Screenshot 2](/Screenshots/6.jpeg)
+<img src="/screenshots/screenshot1.png" alt="Screenshot 1" width="200">
+<img src="/screenshots/screenshot2.png" alt="Screenshot 1" width="200">
+<img src="/screenshots/screenshot3.png" alt="Screenshot 1" width="200">
+<img src="/screenshots/screenshot4.png" alt="Screenshot 1" width="200">
+<img src="/screenshots/screenshot5.png" alt="Screenshot 1" width="200">
+<img src="/screenshots/screenshot6.png" alt="Screenshot 1" width="200">
