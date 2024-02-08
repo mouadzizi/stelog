@@ -44,8 +44,9 @@ export default StyleSheet.create({
     borderRadius: 5,
     alignItems: "center",
   },
-  addDisabled: {
-    backgroundColor: COLORS.grey,
+  addSecondary: {
+    width: "50%",
+    backgroundColor: COLORS.secondary,
     padding: 15,
     borderRadius: 5,
     alignItems: "center",

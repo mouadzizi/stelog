@@ -12,6 +12,9 @@ import { Picker } from "@react-native-picker/picker";
 
 export default function AddOrderView({ navigation }) {
   const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [selectedProducts, setSelectedProducts] = useState([
+    { product: "", quantity: "" },
+  ]);
   const [orderDate, setOrderDate] = useState("");
   const [shippingDate, setShippingDate] = useState("");
   const [shippingName, setShippingName] = useState("");
@@ -22,7 +25,51 @@ export default function AddOrderView({ navigation }) {
   const [shippingCountry, setShippingCountry] = useState("");
   const [shippingPhone, setShippingPhone] = useState("");
 
-  const { customers, addOrder } = useDatabase();
+  const { customers, addOrder, products } = useDatabase();
+
+  const handleAddProduct = () => {
+    setSelectedProducts([...selectedProducts, { product: "", quantity: "" }]);
+  };
+
+  const handleProductChange = (index, fieldName, value) => {
+    const updatedProducts = [...selectedProducts];
+    updatedProducts[index][fieldName] = value;
+    setSelectedProducts(updatedProducts);
+  };
+
+  const renderProductInputs = () => {
+    return selectedProducts.map((item, index) => (
+      <View key={index} style={styles.section}>
+        <Text style={styles.label}>Product:</Text>
+        <Picker
+          selectedValue={item.product}
+          onValueChange={(value) =>
+            handleProductChange(index, "product", value)
+          }
+        >
+          <Picker.Item label="choisissez un produit:" value="" />
+          {products &&
+            products.map((product) => (
+              <Picker.Item
+                key={product.ProductName}
+                label={product.ProductName}
+                value={product.ProductName}
+              />
+            ))}
+        </Picker>
+        <Text style={styles.label}>Quantité:</Text>
+        <TextInput
+          style={styles.input}
+          keyboardType="number-pad"
+          placeholder="Entrez la quantité"
+          value={item.quantity}
+          onChangeText={(value) =>
+            handleProductChange(index, "quantity", value)
+          }
+        />
+      </View>
+    ));
+  };
 
   const handleAddOrder = () => {
     const orderData = {
@@ -58,12 +105,12 @@ export default function AddOrderView({ navigation }) {
     <View style={styles.container}>
       <ScrollView style={styles.containerScroll}>
         <View style={styles.section}>
-          <Text style={styles.label}>Select Customer:</Text>
+          <Text style={styles.label}>Sélectionnez un client:</Text>
           <Picker
             selectedValue={selectedCustomer}
             onValueChange={(itemValue) => setSelectedCustomer(itemValue)}
           >
-            <Picker.Item label="Select Customer" value={""} />
+            <Picker.Item label="Sélectionnez un client" value={""} />
             {customers &&
               customers.map((customer) => (
                 <Picker.Item
@@ -76,10 +123,22 @@ export default function AddOrderView({ navigation }) {
         </View>
 
         <View style={styles.section}>
+          <Text style={styles.label}>Produits sélectionnés :</Text>
+          {renderProductInputs()}
+          <TouchableOpacity
+            style={styles.addSecondary}
+            onPress={handleAddProduct}
+          >
+            <Text style={styles.addButtonText}>Ajouter</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.section}>
           <Text style={styles.label}>Order Date:</Text>
           <TextInput
             style={styles.input}
             placeholder="Enter Order Date"
+            keyboardType="numeric"
             value={orderDate}
             onChangeText={setOrderDate}
           />
@@ -91,6 +150,7 @@ export default function AddOrderView({ navigation }) {
             style={styles.input}
             placeholder="Enter Shipping Date"
             value={shippingDate}
+            keyboardType="numeric"
             onChangeText={setShippingDate}
           />
         </View>
@@ -139,6 +199,7 @@ export default function AddOrderView({ navigation }) {
           <Text style={styles.label}>Shipping Postal Code:</Text>
           <TextInput
             style={styles.input}
+            keyboardType="numeric"
             placeholder="Enter Shipping Postal Code"
             value={shippingPostalCode}
             onChangeText={setShippingPostalCode}
