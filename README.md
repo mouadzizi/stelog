@@ -28,9 +28,10 @@ List the main features of the project.
 
 ## Screenshots
 
-<img src="/screenshots/screenshot1.jpeg" alt="Screenshot 1" width="200">
-<img src="/screenshots/screenshot2.jpeg" alt="Screenshot 1" width="200">
-<img src="/screenshots/screenshot3.jpeg" alt="Screenshot 1" width="200">
-<img src="/screenshots/screenshot4.jpeg" alt="Screenshot 1" width="200">
-<img src="/screenshots/screenshot5.jpeg" alt="Screenshot 1" width="200">
-<img src="/screenshots/screenshot6.jpeg" alt="Screenshot 1" width="200">
+<img src="/Screenshots/1.jpeg" alt="Screenshot 1" width="200">
+<img src="/Screenshots/1.jpeg" alt="Screenshot 2" width="200">
+<img src="/Screenshots/1.jpeg" alt="Screenshot 3" width="200">
+<img src="/Screenshots/1.jpeg" alt="Screenshot 4" width="200">
+<img src="/Screenshots/1.jpeg" alt="Screenshot 5" width="200">
+<img src="/Screenshots/1.jpeg" alt="Screenshot 6" width="200">
+
